@@ -4,16 +4,16 @@
 <?php
     if(isset($_POST['prenom'],$_POST['nom'],$_POST['mdp'],$_POST['date'],$_POST['lieu'],$_POST['adresse'],$_POST['tele'])){
         //insertion des informations
-        $insertion="INSERT INTO parent(prenom,nom,adresse,date_naissance,lieu_naissance,telephone) VALUES (:prenom,:nom,:adresse,:date_naissance,:lieu_naissance,:telephone)";
-        $parent=$pdo->prepare($insertion);
-        $prent=$parent->execute([
+        $insertion="INSERT INTO directeur(prenom,nom,adresse,date_naissance,lieu_naissance,telephone) VALUES (:prenom,:nom,:adresse,:date_naissance,:lieu_naissance,:telephone)";
+        $directeur=$pdo->prepare($insertion);
+        $directeur=$directeur->execute([
             ':prenom'=>$_POST(['prenom']),
             ':nom'=>$_POST(['nom']),
             ':adresse'=>$_POST(['adresse']),
             ':date_naissance'=>$_POST(['date']),
             ':lieu_naissance'=>$_POST(['lieu']),
             ':talephone'=>$_POST(['tel']),
-            
+        
         ]);
         header("Location: acceuil.php");
     }
@@ -241,15 +241,15 @@
 <body>
     <h1>Formulaire d'inscription</h1>
     <form action="index.php" method="POST">
-        <label for="prenom">Prenom du parent:</label>  
+        <label for="prenom">Prenom du directeur:</label>  
         <div class="input-with-icon">
             <img src="../images/login.png" alt="Icone login" class="input-icon">
-            <input type="text" name="prenom" class="champ" placeholder="Prenom du parent" required>
+            <input type="text" name="prenom" class="champ" placeholder="Prenom du directeur" required>
         </div>
-        <label for="nom">Nom du parent:</label>  
+        <label for="nom">Nom du directeur:</label>  
         <div class="input-with-icon">
             <img src="../images/login.png" alt="Icone login" class="input-icon">
-            <input type="text" name="nom" class="champ" placeholder="Nom du parent" required>
+            <input type="text" name="nom" class="champ" placeholder="Nom du directeur" required>
         </div>
         
         <label for="pass">Mot de passe:</label>  
@@ -269,9 +269,8 @@
         <input type="text" name="lieu" placeholder="veuillez renseigner votre lieu de naissance" required>
 
         <label for="date">Date de naissance</label>
-        <input type="date" name="date" placeholder="veuillez renseigner votre date de naissance" required>
-
-        <label for="tele">Numero de telephone du parent</label>
+        <input type="date" name="date" placeholder="veuillez renseigner votre date de naissance" required>      
+        <label for="tele">Numero de telephone du directeur</label>
         <div class="input-with-icon">
             <img src="../images/tel.png" alt="Icone de la date de naissance" class="input-icon">
             <input type="tel" name="tele" placeholder="771234567" required>
